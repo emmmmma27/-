@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程作業 - 課後習題練習</title>
+</head>
+<body>
+    <body style="background-color:powderblue">
+        <h1 style="color:darkcyan;">Ch5 課後習題</h1>
+        <p style="background-color:tomato;"></p>
+    <div id="results"></div>
+    <button onclick="window.location.href='ch4.html'">上一頁</button>
+    <button onclick="window.location.href='ch6.html'">下一頁</button>
+    <script>
+        // 將答案顯示在網頁上
+        function displayResult(index, result) {
+            const resultElement = document.createElement("p");
+            resultElement.textContent = index + ". " + result;
+            document.getElementById("results").appendChild(resultElement);
+        }
+
+        // 第1張圖片的習題
+
+        // (1) 寫一個函式用來計算任意數字的平均值。
+        function average(...nums) {
+            let sum = 0;
+            for (let num of nums) {
+                sum += num;
+            }
+            return sum / nums.length;
+        }
+        const nums = [1, 2, 3, 4, 5];
+        displayResult(1, `平均值: ${average(...nums)}`);
+
+        // (2) 寫一個函式用來檢查一個數字是否為質數。
+        function isPrime(num) {
+            if (num <= 1) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+        const numPrime = 7;
+        displayResult(2, `數字 ${numPrime} 是質數嗎？${isPrime(numPrime)}`);
+
+        // (3) 寫一個函式用來將一個數字轉換為其二進位表示法的字串。
+        function toBinaryString(num) {
+            return num.toString(2);
+        }
+        const numBinary = 10;
+        displayResult(3, `數字 ${numBinary} 的二進位表示法是 ${toBinaryString(numBinary)}`);
+
+        // (4) 寫一個函式用來找出陣列中的最小值和最大值。
+        function findMinMax(array) {
+            let min = array[0], max = array[0];
+            for (let i = 1; i < array.length; i++) {
+                if (array[i] < min) min = array[i];
+                if (array[i] > max) max = array[i];
+            }
+            return { min, max };
+        }
+        const arr = [1, 2, 3, 4, 5];
+        const { min, max } = findMinMax(arr);
+        displayResult(4, `陣列 [${arr}] 中的最小值是 ${min}, 最大值是 ${max}`);
+
+        // 第2張圖片的習題
+
+        // (1) 寫一個遞迴函式用來計算費氏數列的第n項。
+        function fibonacci(n) {
+            if (n === 1 || n === 2) return 1;
+            return fibonacci(n - 1) + fibonacci(n - 2);
+        }
+        const nFib = 5;
+        displayResult(5, `費氏數列的第 ${nFib} 項是 ${fibonacci(nFib)}`);
+
+        // (2) 寫一個遞迴函式用來計算兩個正整數的最大公因數（GCD）。
+        function gcd(m, n) {
+            if (n === 0) return m;
+            return gcd(n, m % n);
+        }
+        const m = 48, n = 18;
+        displayResult(6, `數字 ${m} 和 ${n} 的最大公因數是 ${gcd(m, n)}`);
+    </script>
+</body>
+</html>

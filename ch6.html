@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程作業 - 課後習題練習</title>
+</head>
+<body>
+    <body style="background-color:powderblue">
+        <h1 style="color:darkcyan;">Ch6 課後習題</h1>
+        <p style="background-color:tomato;"></p>
+    <div id="results"></div>
+    <button onclick="window.location.href='ch5.html'">上一頁</button>
+    <script>
+        // 將答案顯示在網頁上
+        function displayResult(index, result) {
+            const resultElement = document.createElement("p");
+            resultElement.textContent = index + ". " + result;
+            document.getElementById("results").appendChild(resultElement);
+        }
+
+        // 第3張圖片的習題
+
+        // (1) 寫一個函式用來計算一個日期物件現在的天數。
+        function getDays(date) {
+            const start = new Date(date.getFullYear(), 0, 0);
+            const diff = date - start;
+            const oneDay = 1000 * 60 * 60 * 24;
+            const day = Math.floor(diff / oneDay);
+            return day;
+        }
+        const today = new Date();
+        displayResult(1, `今天是今年的第 ${getDays(today)} 天`);
+
+        // (2) 寫一個函式用來將一個字串反轉。
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+        const str = "hello";
+        displayResult(2, `字串 "${str}" 反轉後是 "${reverseString(str)}"`);
+
+        // (3) 寫一個函式用來判斷一個字串是否為迴文。
+        function isPalindrome(str) {
+            let left = 0;
+            let right = str.length - 1;
+            while (left < right) {
+                if (str[left] !== str[right]) {
+                    return false;
+                }
+                left++;
+                right--;
+            }
+            return true;
+        }
+        const strPalindrome = "racecar";
+        displayResult(3, `字串 "${strPalindrome}" 是迴文嗎？${isPalindrome(strPalindrome)}`);
+
+        // (4) 寫一個函式來生成一個指定長度的隨機字串。
+        function randomString(length) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+        const length = 10;
+        displayResult(4, `隨機字串（長度 ${length}）: ${randomString(length)}`);
+
+        // 第4張圖片的習題
+
+        // (1) 寫一個函式用來判斷一個數字是否為完美數。
+        function isPerfectNumber(num) {
+            let sum = 0;
+            for (let i = 1; i < num; i++) {
+                if (num % i === 0) {
+                    sum += i;
+                }
+            }
+            return sum === num;
+        }
+        const numPerfect = 6;
+        displayResult(5, `數字 ${numPerfect} 是完美數嗎？${isPerfectNumber(numPerfect)}`);
+
+        // (2) 寫一個函式用來進行氣泡排序法。
+        function bubbleSort(arr) {
+            var len = arr.length;
+            for (var i = 0; i < len; i++) {
+                for (var j = 0; j < len - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        var temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        const arrBubble = [5, 1, 4, 2, 8];
+        displayResult(6, `排序前: [${arrBubble}] 排序後: [${bubbleSort(arrBubble)}]`);
+    </script>
+</body>
+</html>

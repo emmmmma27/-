@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程作業 - 課後習題練習</title>
+</head>
+<body>
+    <body style="background-color:powderblue">
+        <h1 style="color:darkcyan;">Ch4 課後習題</h1>
+        <p style="background-color:tomato;"></p>
+    <div id="results"></div>
+    <button onclick="window.location.href='Ch3.html'">上一頁</button>
+    <button onclick="window.location.href='ch5.html'">下一頁</button>
+    <script>
+        // 將答案顯示在網頁上
+        function displayResult(index, result) {
+            const resultElement = document.createElement("p");
+            resultElement.textContent = index + ". " + result;
+            document.getElementById("results").appendChild(resultElement);
+        }
+
+        // (1) 提示使用者輸入一個年份，判斷這個年份是否為閏年。
+        function isLeapYear(year) {
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        const year = 2024; // 替換成你要測試的年份
+        displayResult(1, `年份 ${year} 是閏年嗎？${isLeapYear(year)}`);
+
+        // (2) 提示使用者輸入一個月份，然後輸出該月份的天數。
+        function getDaysInMonth(month, year) {
+            switch (month) {
+                case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                    return 31;
+                case 4: case 6: case 9: case 11:
+                    return 30;
+                case 2:
+                    return isLeapYear(year) ? 29 : 28;
+                default:
+                    return "無效的月份";
+            }
+        }
+        const month = 2; // 替換成你要測試的月份
+        displayResult(2, `月份 ${month} 有 ${getDaysInMonth(month, year)} 天`);
+
+        // (3) 提示使用者輸入一個字串，然後使用 for 迴圈將字串反轉。
+        function reverseString(str) {
+            let reversed = "";
+            for (let i = str.length - 1; i >= 0; i--) {
+                reversed += str[i];
+            }
+            return reversed;
+        }
+        const str = "hello"; // 替換成你要測試的字串
+        displayResult(3, `字串 "${str}" 的反轉結果是 "${reverseString(str)}"`);
+
+        // (4) 使用 for 迴圈印出由 "*" 組成的倒直角三角形。
+        function printTriangle(n) {
+            let triangle = "";
+            for (let i = n; i > 0; i--) {
+                triangle += "*".repeat(i) + "\n";
+            }
+            return triangle;
+        }
+        const n = 5; // 替換成你要測試的高度
+        displayResult(4, `倒直角三角形:\n${printTriangle(n)}`);
+
+        // (5) 使用 while 迴圈判斷一個數是否為質數。
+        function isPrime(num) {
+            if (num <= 1) return false;
+            let i = 2;
+            while (i <= Math.sqrt(num)) {
+                if (num % i === 0) return false;
+                i++;
+            }
+            return true;
+        }
+        const num = 17; // 替換成你要測試的數字
+        displayResult(5, `數字 ${num} 是質數嗎？${isPrime(num)}`);
+
+        // (6) 使用 while 迴圈印出由 "*" 組成的倒直角三角形。
+        function printTriangleWhile(n) {
+            let triangle = "";
+            let i = n;
+            while (i > 0) {
+                triangle += "*".repeat(i) + "\n";
+                i--;
+            }
+            return triangle;
+        }
+        displayResult(6, `倒直角三角形 (使用 while 迴圈):\n${printTriangleWhile(n)}`);
+
+        // (7) 輸入一個正整數 n，使用 do...while 迴圈計算 n! (即 n 的階乘)，並輸出結果。
+        function factorial(n) {
+            let result = 1;
+            let i = 1;
+            do {
+                result *= i;
+                i++;
+            } while (i <= n);
+            return result;
+        }
+        const nFactorial = 5; // 替換成你要測試的正整數
+        displayResult(7, `數字 ${nFactorial} 的階乘是 ${factorial(nFactorial)}`);
+
+        // (8) 使用 for...of 迴圈找出陣列中的最大值。
+        function findMax(arr) {
+            let max = arr[0];
+            for (const num of arr) {
+                if (num > max) max = num;
+            }
+            return max;
+        }
+        const arr = [1, 5, 2, 7, 3]; // 替換成你要測試的陣列
+        displayResult(8, `陣列 [${arr}] 中的最大值是 ${findMax(arr)}`);
+
+        // (9) 使用 for...of 迴圈計算陣列中所有偶數元素的總和。
+        function sumEvenNumbers(arr) {
+            let sum = 0;
+            for (const num of arr) {
+                if (num % 2 === 0) sum += num;
+            }
+            return sum;
+        }
+        const arr2 = [1, 2, 3, 4, 5, 6, 7, 8]; // 替換成你要測試的陣列
+        displayResult(9, `陣列 [${arr2}] 中偶數元素的總和是 ${sumEvenNumbers(arr2)}`);
+
+        // (10) 使用 for...in 迴圈計算物件中屬性的總和。
+        function sumObjectValues(obj) {
+            let sum = 0;
+            for (const key in obj) {
+                sum += obj[key];
+            }
+            return sum;
+        }
+        const obj = {a: 1, b: 2, c: 3, d: 4, e: 5}; // 替換成你要測試的物件
+        displayResult(10, `物件 {a: 1, b: 2, c: 3, d: 4, e: 5} 中屬性的總和是 ${sumObjectValues(obj)}`);
+    </script>
+</body>
+</html>

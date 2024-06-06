@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課程作業 - 課後習題練習</title>
+</head>
+<body>
+    <body style="background-color:powderblue">
+        <h1 style="color:darkcyan;">Ch3 課後習題</h1>
+        <p style="background-color:tomato;"></p>
+    <div id="results"></div>
+    <button onclick="window.location.href='ch4.html'">下一頁</button>
+    <script>
+        function displayResult(index, result) {
+            const resultElement = document.createElement("p");
+            resultElement.textContent = index + ". " + result;
+            document.getElementById("results").appendChild(resultElement);
+        }
+
+        // Ch3 習題
+        // (1) 計算2的10次方
+        displayResult(1, `2 的 10 次方: ${Math.pow(2, 10)}`);
+
+        // (2) 計算100除以7的商和餘數
+        const quotient = Math.floor(100 / 7);
+        const remainder = 100 % 7;
+        displayResult(2, `100 除以 7 的商: ${quotient}, 餘數: ${remainder}`);
+
+        // (3) 計算10除以3的商，保留2位小數
+        const division = (10 / 3).toFixed(2);
+        displayResult(3, `10 除以 3 的商，保留 2 位小數: ${division}`);
+
+        // (4) 字符串"5"轉換成數字然後乘以10
+        const str = "5";
+        const num = parseInt(str) * 10;
+        displayResult(4, `字符串 "5" 轉換成數字然後乘以 10: ${num}`);
+
+        // (5) 判斷當前的小時是否大於等於7
+        const currentHour = new Date().getHours();
+        displayResult(5, `當前小時 (${currentHour}) 是否大於等於 7: ${currentHour >= 7}`);
+
+        // (6) 將字符串"hello"與字符串"world"連接起來
+        const helloWorld = "hello" + "world";
+        displayResult(6, `字符串 "hello" 與字符串 "world" 連接起來: ${helloWorld}`);
+
+        // (7) 判斷字符串123是否為數字
+        const isNum = !isNaN("123");
+        displayResult(7, `字符串 "123" 是否為數字: ${isNum}`);
+
+        // (8) 判斷字符串"4"轉換成數字之後，是否小於數字"2"
+        const isLessThanTwo = Number("4") < 2;
+        displayResult(8, `字符串 "4" 轉換成數字之後，是否小於數字 "2": ${isLessThanTwo}`);
+
+        // (9) 判斷數字15是否在10到20之間（包括10和20）
+        const inRange = (num) => num >= 10 && num <= 20;
+        displayResult(9, `數字 15 是否在 10 到 20 之間: ${inRange(15)}`);
+
+        // (10) 判斷字符串"hello"是否不為undefined且不為null
+        const strHello = "hello";
+        const isValidString = strHello !== undefined && strHello !== null;
+        displayResult(10, `字符串 "hello" 是否不為 undefined 且不為 null: ${isValidString}`);
+
+        // (11) 將數字25除以2，判斷結果是否為偶數
+        const isEven = (num) => (num % 2 === 0);
+        displayResult(11, `將數字 25 除以 2，判斷結果是否為偶數: ${isEven(25 / 2)}`);
+
+        // (12) 比較兩個數字x和y的大小
+        const x = 5, y = 10;
+        const compare = (a, b) => (a > b ? "大於" : a < b ? "小於" : "等於");
+        displayResult(12, `數字 ${x} 和數字 ${y} 的比較結果: ${x} ${compare(x, y)} ${y}`);
+    </script>
+</body>
+</html>
